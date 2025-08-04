@@ -159,8 +159,6 @@ class TradingAgentsLogger:
             'format': logging_config.get('format', {}),
             'handlers': logging_config.get('handlers', {}),
             'loggers': logging_config.get('loggers', {}),
-,
-            'performance': logging_config.get('performance', {}),
             'security': logging_config.get('security', {}),
             'business': logging_config.get('business', {})
         }
