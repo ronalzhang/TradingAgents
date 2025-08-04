@@ -1,6 +1,6 @@
 [server]
 # 服务器配置
-port = 8501
+port = 8080
 address = "0.0.0.0"  # Docker环境需要监听所有接口
 headless = true      # Docker环境无头模式
 enableCORS = false

@@ -60,88 +60,20 @@ def check_git():
     print_colored("请安装Git: https://git-scm.com/downloads", Colors.YELLOW)
     return False
 
-def check_docker():
-    """检查Docker是否安装"""
-    print_colored("🔍 检查Docker...", Colors.BLUE)
-    
-    try:
-        result = subprocess.run(['docker', '--version'], capture_output=True, text=True)
-        if result.returncode == 0:
-            print_colored(f"✅ {result.stdout.strip()}", Colors.GREEN)
-            
-            # 检查Docker Compose
-            try:
-                result = subprocess.run(['docker-compose', '--version'], capture_output=True, text=True)
-                if result.returncode == 0:
-                    print_colored(f"✅ {result.stdout.strip()}", Colors.GREEN)
-                    return True
-            except FileNotFoundError:
-                pass
-            
-            print_colored("❌ Docker Compose未安装", Colors.YELLOW)
-            return False
-    except FileNotFoundError:
-        pass
-    
-    print_colored("❌ Docker未安装", Colors.YELLOW)
-    return False
+
 
 def choose_installation_method():
     """选择安装方式"""
     print_colored("\n📋 请选择安装方式:", Colors.BLUE)
-    print("1. Docker安装 (推荐，简单稳定)")
-    print("2. 本地安装 (适合开发者)")
+    print("1. 本地安装 (推荐，适合开发者)")
     
     while True:
-        choice = input("\n请输入选择 (1/2): ").strip()
-        if choice in ['1', '2']:
+        choice = input("\n请输入选择 (1): ").strip()
+        if choice == '1':
             return choice
-        print_colored("请输入有效选择 (1或2)", Colors.YELLOW)
+        print_colored("请输入有效选择 (1)", Colors.YELLOW)
 
-def docker_install():
-    """Docker安装流程"""
-    print_colored("\n🐳 开始Docker安装...", Colors.BLUE)
-    
-    # 检查项目目录
-    if not Path('docker-compose.yml').exists():
-        print_colored("❌ 未找到docker-compose.yml文件", Colors.RED)
-        print_colored("请确保在项目根目录运行此脚本", Colors.YELLOW)
-        return False
-    
-    # 检查.env文件
-    if not Path('.env').exists():
-        print_colored("📝 创建环境配置文件...", Colors.BLUE)
-        if Path('.env.example').exists():
-            shutil.copy('.env.example', '.env')
-            print_colored("✅ 已创建.env文件", Colors.GREEN)
-        else:
-            print_colored("❌ 未找到.env.example文件", Colors.RED)
-            return False
-    
-    # 提示配置API密钥
-    print_colored("\n⚠️  重要提醒:", Colors.YELLOW)
-    print_colored("请编辑.env文件，配置至少一个AI模型的API密钥", Colors.YELLOW)
-    print_colored("推荐配置DeepSeek或通义千问API密钥", Colors.YELLOW)
-    
-    input("\n按回车键继续...")
-    
-    # 启动Docker服务
-    print_colored("🚀 启动Docker服务...", Colors.BLUE)
-    try:
-        result = subprocess.run(['docker-compose', 'up', '-d'], 
-                              capture_output=True, text=True)
-        if result.returncode == 0:
-            print_colored("✅ Docker服务启动成功!", Colors.GREEN)
-            print_colored("\n🌐 访问地址:", Colors.BLUE)
-            print_colored("主应用: http://localhost:8501", Colors.GREEN)
-            print_colored("Redis管理: http://localhost:8081", Colors.GREEN)
-            return True
-        else:
-            print_colored(f"❌ Docker启动失败: {result.stderr}", Colors.RED)
-            return False
-    except Exception as e:
-        print_colored(f"❌ Docker启动异常: {e}", Colors.RED)
-        return False
+
 
 def local_install():
     """本地安装流程"""
@@ -208,7 +140,7 @@ def local_install():
     
     # 启动应用
     print_colored("🚀 启动应用...", Colors.BLUE)
-    print_colored("应用将在浏览器中打开: http://localhost:8501", Colors.GREEN)
+    print_colored("应用将在浏览器中打开: http://localhost:8080", Colors.GREEN)
     
     # 提供启动命令
     if platform.system() == "Windows":
@@ -232,21 +164,12 @@ def main():
         return
     
     check_git()
-    docker_available = check_docker()
     
     # 选择安装方式
-    if docker_available:
-        choice = choose_installation_method()
-    else:
-        print_colored("\n💡 Docker未安装，将使用本地安装方式", Colors.YELLOW)
-        choice = '2'
+    choice = choose_installation_method()
     
     # 执行安装
-    success = False
-    if choice == '1':
-        success = docker_install()
-    else:
-        success = local_install()
+    success = local_install()
     
     # 安装结果
     if success:

@@ -189,10 +189,7 @@ pip install pymongo redis
 2. 安装并启动服务
 3. 默认端口：27017
 
-#### 使用Docker:
-```bash
-docker run -d -p 27017:27017 --name mongodb mongo:4.4
-```
+
 
 ### 3. 安装Redis（可选）
 #### Windows:
@@ -200,10 +197,7 @@ docker run -d -p 27017:27017 --name mongodb mongo:4.4
 2. 启动redis-server
 3. 默认端口：6379
 
-#### 使用Docker:
-```bash
-docker run -d -p 6379:6379 --name redis redis:alpine
-```
+
 
 ## 配置说明
 

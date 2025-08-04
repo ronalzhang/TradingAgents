@@ -39,7 +39,7 @@ $ScriptsStructure = @{
         "deployment" = @(
             "deploy_web.py",
             "package_release.py",
-            "docker_build.py"
+            
         )
     }
 }
@@ -169,7 +169,7 @@ $MainReadmeContent = @"
 ### 🚀 deployment/ - 部署脚本
 - Web应用部署
 - 发布打包
-- Docker构建
+
 
 ## 使用原则
 

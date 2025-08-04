@@ -22,7 +22,7 @@
 
 ### 🏗️ 架构文档
 - [系统架构](./architecture/system-architecture.md) - 整体系统架构设计 (v0.1.7更新) ✨
-- [容器化架构](./architecture/containerization-architecture.md) - Docker容器化架构设计 (v0.1.7新增) ✨
+
 - [数据库架构](./architecture/database-architecture.md) - MongoDB+Redis数据库架构
 - [智能体架构](./architecture/agent-architecture.md) - 智能体设计模式
 - [数据流架构](./architecture/data-flow-architecture.md) - 数据处理流程
@@ -49,7 +49,7 @@
 - [🤖 多LLM提供商集成](./features/multi-llm-integration.md) - 4大提供商，60+模型支持 (v0.1.11) ✨
 - [💾 模型选择持久化](./features/model-persistence.md) - URL参数存储，配置保持 (v0.1.11) ✨
 - [📄 报告导出功能](./features/report-export.md) - Word/PDF/Markdown多格式导出 (v0.1.7) ✨
-- [🐳 Docker容器化部署](./features/docker-deployment.md) - 一键部署完整环境 (v0.1.7) ✨
+
 - [📰 新闻分析系统](./features/news-analysis-system.md) - 多源实时新闻聚合与分析 ✨
 
 ### ⚙️ 配置与部署
@@ -57,7 +57,7 @@
 - [LLM配置](./configuration/llm-config.md) - 大语言模型配置 (v0.1.11更新) ✨
 - [多提供商配置](./configuration/multi-provider-config.md) - 4大LLM提供商配置指南 (v0.1.11新增) ✨
 - [OpenRouter配置](./configuration/openrouter-config.md) - OpenRouter 60+模型配置 (v0.1.11新增) ✨
-- [Docker配置](./configuration/docker-config.md) - Docker环境配置指南 (v0.1.7) ✨
+
 - [DeepSeek配置](./configuration/deepseek-config.md) - DeepSeek V3模型配置 ✨
 - [阿里百炼配置](./configuration/dashscope-config.md) - 阿里百炼模型配置 ✨
 - [Google AI配置](./configuration/google-ai-setup.md) - Google AI (Gemini)模型配置指南 ✨
@@ -91,7 +91,7 @@
 - [📊 投资分析指南](./usage/investment_analysis_guide.md) - 投资分析完整流程
 - [🇨🇳 A股分析指南](./guides/a-share-analysis-guide.md) - A股市场分析专项指南 (v0.1.7) ✨
 - [⚙️ 配置管理指南](./guides/config-management-guide.md) - 配置管理和成本统计使用方法 (v0.1.7) ✨
-- [🐳 Docker部署指南](./guides/docker-deployment-guide.md) - Docker容器化部署详细指南 (v0.1.7) ✨
+
 - [📄 报告导出指南](./guides/report-export-guide.md) - 专业报告导出使用指南 (v0.1.7) ✨
 - [🧠 DeepSeek使用指南](./guides/deepseek-usage-guide.md) - DeepSeek V3模型使用指南 (v0.1.7) ✨
 - [📰 新闻分析系统使用指南](./guides/news-analysis-guide.md) - 实时新闻获取与分析指南 ✨

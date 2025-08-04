@@ -16,7 +16,7 @@ assignees: ''
 - [ ] 🔧 使用方法 / Usage Instructions
 - [ ] 🤖 LLM配置 / LLM Configuration
 - [ ] 📊 数据源设置 / Data Source Setup
-- [ ] 🐳 Docker部署 / Docker Deployment
+
 - [ ] 🔍 功能理解 / Feature Understanding
 - [ ] 💡 最佳实践 / Best Practices
 - [ ] 🔄 故障排除 / Troubleshooting
@@ -39,7 +39,6 @@ assignees: ''
 
 **安装方式 / Installation:**
 - [ ] 本地安装 / Local Installation
-- [ ] Docker部署 / Docker Deployment
 
 **配置状态 / Configuration Status:**
 - [ ] 已配置API密钥 / API keys configured
@@ -53,7 +52,7 @@ assignees: ''
 
 **参考的文档 / Referenced Documentation:**
 - [ ] README.md
-- [ ] Docker部署指南 / Docker Guide
+
 - [ ] 项目文档 / Project Documentation
 - [ ] 其他资源 / Other resources: ___________
 
@@ -116,7 +115,7 @@ If helpful, please add screenshots.
 
 **常见问题 / FAQ:**
 - 📖 [项目文档](../docs/)
-- 🐳 [Docker部署指南](../docs/DOCKER_GUIDE.md)
+
 - 🚀 [快速开始指南](../README.md#🚀-启动应用)
 - ⚙️ [配置说明](../README.md#配置api密钥)
 

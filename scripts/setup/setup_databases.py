@@ -93,8 +93,7 @@ def setup_redis_windows():
        - 输入: ping
        - 应该返回: PONG
     
-    或者使用Docker:
-    docker run -d -p 6379:6379 --name redis redis:latest
+    
     
     默认连接地址: redis://localhost:6379
     """)
@@ -153,35 +152,7 @@ def setup_redis_linux():
     for cmd in commands:
         run_command(cmd, f"执行: {cmd}")
 
-def setup_docker_option():
-    """Docker方式设置"""
-    logger.info(f"\n🐳 Docker 方式设置 (推荐):")
-    print("""
-    如果您已安装Docker，可以使用以下命令快速启动:
-    
-    # 启动MongoDB
-    docker run -d \\
-      --name mongodb \\
-      -p 27017:27017 \\
-      -v mongodb_data:/data/db \\
-      mongo:latest
-    
-    # 启动Redis
-    docker run -d \\
-      --name redis \\
-      -p 6379:6379 \\
-      -v redis_data:/data \\
-      redis:latest
-    
-    # 查看运行状态
-    docker ps
-    
-    # 停止服务
-    docker stop mongodb redis
-    
-    # 重新启动
-    docker start mongodb redis
-    """)
+
 
 def create_env_template():
     """创建环境变量模板"""
@@ -243,8 +214,7 @@ def main():
     else:
         logger.warning(f"⚠️ 不支持的操作系统: {system}")
     
-    # Docker选项
-    setup_docker_option()
+
     
     # 创建配置文件
     create_env_template()

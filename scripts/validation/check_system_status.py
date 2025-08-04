@@ -225,10 +225,10 @@ def check_system_status():
             logger.info(f"     MONGODB_ENABLED=true")
             logger.info(f"     REDIS_ENABLED=true")
             logger.info(f"  2. 启动数据库服务:")
-            logger.info(f"     docker-compose up -d  # 推荐方式")
+            logger.info(f"     python start_web.py  # 推荐方式")
             logger.info(f"     或手动启动:")
-            logger.info(f"     - MongoDB: docker run -d -p 27017:27017 mongo:4.4")
-            logger.info(f"     - Redis: docker run -d -p 6379:6379 redis:alpine")
+            logger.info(f"     - MongoDB: mongod --dbpath ./data/mongodb")
+            logger.info(f"     - Redis: redis-server")
         
         performance_mode = cache.get_performance_mode()
         logger.info(f"🎯 当前性能模式: {performance_mode}")

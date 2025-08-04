@@ -45,15 +45,7 @@ def finalize_script_organization():
         "sync_upstream.py": "maintenance/sync_upstream.py",
         "version_manager.py": "maintenance/version_manager.py",
         
-        # Docker脚本 -> scripts/docker/
-        "docker-compose-start.bat": "docker/docker-compose-start.bat",
-        "start_docker_services.bat": "docker/start_docker_services.bat",
-        "start_docker_services.sh": "docker/start_docker_services.sh",
-        "stop_docker_services.bat": "docker/stop_docker_services.bat",
-        "stop_docker_services.sh": "docker/stop_docker_services.sh",
-        "start_services_alt_ports.bat": "docker/start_services_alt_ports.bat",
-        "start_services_simple.bat": "docker/start_services_simple.bat",
-        "mongo-init.js": "docker/mongo-init.js",
+        
         
         # Git工具 -> scripts/git/
         "upstream_git_workflow.sh": "git/upstream_git_workflow.sh",
@@ -63,7 +55,7 @@ def finalize_script_organization():
     # 创建必要的目录
     directories_to_create = [
         "deployment",
-        "docker", 
+ 
         "git"
     ]
     
@@ -109,16 +101,7 @@ def finalize_script_organization():
                 "release_v0.1.3.py - 发布v0.1.3版本"
             ]
         },
-        "docker": {
-            "title": "Docker Scripts", 
-            "description": "Docker容器管理脚本",
-            "scripts": [
-                "docker-compose-start.bat - 启动Docker Compose",
-                "start_docker_services.* - 启动Docker服务",
-                "stop_docker_services.* - 停止Docker服务",
-                "mongo-init.js - MongoDB初始化脚本"
-            ]
-        },
+
         "git": {
             "title": "Git Tools",
             "description": "Git工具和工作流脚本", 
@@ -207,10 +190,7 @@ python scripts/{dir_name}/script_name.py
 - 版本发布
 - 打包部署
 
-### 🐳 docker/ - Docker脚本
-- Docker服务管理
-- 容器启动停止
-- 数据库初始化
+
 
 ### 📋 git/ - Git工具脚本
 - 上游同步
@@ -248,7 +228,7 @@ bash scripts/git/upstream_git_workflow.sh
 | `maintenance/` | 维护和管理 | sync_upstream.py |
 | `development/` | 开发辅助 | prepare_upstream_contribution.py |
 | `deployment/` | 部署发布 | create_github_release.py |
-| `docker/` | 容器管理 | start_docker_services.bat |
+
 | `git/` | Git工具 | upstream_git_workflow.sh |
 
 ## 注意事项
@@ -284,7 +264,7 @@ bash scripts/git/upstream_git_workflow.sh
     logger.info(f"\n📊 检查最终状态...")
     
     # 统计各目录的脚本数量
-    subdirs = ["setup", "validation", "maintenance", "development", "deployment", "docker", "git"]
+    subdirs = ["setup", "validation", "maintenance", "development", "deployment", "git"]
     total_scripts = 0
     
     for subdir in subdirs:

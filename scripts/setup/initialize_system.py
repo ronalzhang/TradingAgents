@@ -261,12 +261,12 @@ python scripts/validation/check_system_status.py
 
 2. **启动MongoDB** (可选):
    ```bash
-   docker run -d -p 27017:27017 --name mongodb mongo:4.4
+   
    ```
 
 3. **启动Redis** (可选):
    ```bash
-   docker run -d -p 6379:6379 --name redis redis:alpine
+   
    ```
 
 4. **重新初始化系统**:

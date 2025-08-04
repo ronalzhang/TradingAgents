@@ -8,7 +8,7 @@
 
 > 🚀 **最新版本 cn-0.1.12**: 智能新闻分析模块全面升级，新增多层次新闻过滤、质量评估、相关性分析，支持A股/港股/美股新闻智能处理！
 >
-> 🎯 **核心功能**: 智能新闻过滤 | 新闻质量评估 | 相关性分析 | 多LLM提供商支持 | 模型选择持久化 | Docker容器化部署 | 专业报告导出 | 完整A股支持 | 中文本地化
+> 🎯 **核心功能**: 智能新闻过滤 | 新闻质量评估 | 相关性分析 | 多LLM提供商支持 | 模型选择持久化 | 本地部署 | 专业报告导出 | 完整A股支持 | 中文本地化
 
 基于多智能体大语言模型的**中文金融交易决策框架**。专为中文用户优化，提供完整的A股/港股/美股分析能力。
 
@@ -143,7 +143,7 @@
 
 ## 🚀 快速开始
 
-### 🐳 Docker部署 (推荐)
+### 💻 本地部署
 
 ```bash
 # 1. 克隆项目
@@ -154,38 +154,20 @@ cd TradingAgents-CN
 cp .env.example .env
 # 编辑 .env 文件，填入API密钥
 
-# 3. 启动服务
-# 首次启动或代码变更时（需要构建镜像）
-docker-compose up -d --build
-
-# 日常启动（镜像已存在，无代码变更）
-docker-compose up -d
-
-# 智能启动（自动判断是否需要构建）
-# Windows环境
-powershell -ExecutionPolicy Bypass -File scripts\smart_start.ps1
-
-# Linux/Mac环境
-chmod +x scripts/smart_start.sh && ./scripts/smart_start.sh
-
-# 4. 访问应用
-# Web界面: http://localhost:8501
-```
-
-### 💻 本地部署
-
-```bash
-# 1. 升级pip (重要！避免安装错误)
+# 3. 升级pip (重要！避免安装错误)
 python -m pip install --upgrade pip
 
-# 2. 安装依赖
+# 4. 安装依赖
 pip install -e .
 
-# 3. 启动应用
+# 5. 启动应用
 python start_web.py
 
-# 4. 访问 http://localhost:8501
+# 6. 访问应用
+# Web界面: http://localhost:8080
 ```
+
+
 
 ### 📊 开始分析
 
@@ -208,7 +190,7 @@ python start_web.py
 - **🆕 实时进度**: v0.1.10异步进度跟踪，告别黑盒等待
 - **💾 智能会话**: 状态持久化，页面刷新不丢失分析结果
 - **🇨🇳 中国优化**: A股/港股数据 + 国产LLM + 中文界面
-- **🐳 容器化**: Docker一键部署，环境隔离，快速扩展
+- **🚀 本地部署**: 简单快速，环境独立，易于调试
 - **📄 专业报告**: 多格式导出，自动生成投资建议
 - **🛡️ 稳定可靠**: 多层数据源，智能降级，错误恢复
 
@@ -217,7 +199,7 @@ python start_web.py
 **核心技术**: Python 3.10+ | LangChain | Streamlit | MongoDB | Redis
 **AI模型**: DeepSeek V3 | 阿里百炼 | Google AI | OpenRouter(60+模型) | OpenAI
 **数据源**: Tushare | AkShare | FinnHub | Yahoo Finance
-**部署**: Docker | Docker Compose | 本地部署
+**部署**: 本地部署 | 虚拟环境 | 直接安装
 
 ## 📚 文档和支持
 
@@ -228,15 +210,13 @@ python start_web.py
 
 ## 🆚 中文增强特色
 
-**相比原版新增**: 智能新闻分析 | 多层次新闻过滤 | 新闻质量评估 | 统一新闻工具 | 多LLM提供商集成 | 模型选择持久化 | 快速切换按钮 | | 实时进度显示 | 智能会话管理 | 中文界面 | A股数据 | 国产LLM | Docker部署 | 专业报告导出 | 统一日志管理 | Web配置界面 | 成本优化
+**相比原版新增**: 智能新闻分析 | 多层次新闻过滤 | 新闻质量评估 | 统一新闻工具 | 多LLM提供商集成 | 模型选择持久化 | 快速切换按钮 | | 实时进度显示 | 智能会话管理 | 中文界面 | A股数据 | 国产LLM | 本地部署 | 专业报告导出 | 统一日志管理 | Web配置界面 | 成本优化
 
-**Docker部署包含的服务**:
+**本地部署包含的服务**:
 
 - 🌐 **Web应用**: TradingAgents-CN主程序
-- 🗄️ **MongoDB**: 数据持久化存储
-- ⚡ **Redis**: 高速缓存
-- 📊 **MongoDB Express**: 数据库管理界面
-- 🎛️ **Redis Commander**: 缓存管理界面
+- 🗄️ **MongoDB**: 数据持久化存储（可选）
+- ⚡ **Redis**: 高速缓存（可选）
 
 #### 💻 方式二：本地部署
 
@@ -300,9 +280,7 @@ MONGODB_PORT=27017     # 标准MongoDB端口
 REDIS_HOST=localhost
 REDIS_PORT=6379        # 标准Redis端口
 
-# Docker部署时需要修改主机名
-# MONGODB_HOST=mongodb
-# REDIS_HOST=redis
+
 ```
 
 #### 📋 部署模式配置说明
@@ -319,23 +297,7 @@ REDIS_HOST=localhost       # 本地主机
 REDIS_PORT=6379           # 标准端口
 ```
 
-**Docker部署模式**：
 
-```bash
-# 数据库配置（Docker部署）
-MONGODB_ENABLED=true
-REDIS_ENABLED=true
-MONGODB_HOST=mongodb       # Docker容器服务名
-MONGODB_PORT=27017        # 标准端口
-REDIS_HOST=redis          # Docker容器服务名
-REDIS_PORT=6379          # 标准端口
-```
-
-> 💡 **配置提示**：
->
-> - 本地部署：需要手动启动MongoDB和Redis服务
-> - Docker部署：数据库服务通过docker-compose自动启动
-> - 端口冲突：如果本地已有数据库服务，可修改docker-compose.yml中的端口映射
 
 #### 🌍 可选：使用国外模型
 
@@ -360,37 +322,11 @@ ANTHROPIC_API_KEY=your_anthropic_api_key
 
 #### 数据库部署方式
 
-**🐳 Docker部署（推荐）**
-
-如果您使用Docker部署，数据库已自动包含在内：
-
-```bash
-# Docker部署会自动启动所有服务，包括：
-docker-compose up -d --build
-# - Web应用 (端口8501)
-# - MongoDB (端口27017)
-# - Redis (端口6379)
-# - 数据库管理界面 (端口8081, 8082)
-```
-
 **💻 本地部署 - 数据库配置**
 
 如果您使用本地部署，可以选择以下方式：
 
-**方式一：仅启动数据库服务**
-
-```bash
-# 仅启动 MongoDB + Redis 服务（不启动Web应用）
-docker-compose up -d mongodb redis mongo-express redis-commander
-
-# 查看服务状态
-docker-compose ps
-
-# 停止服务
-docker-compose down
-```
-
-**方式二：完全本地安装**
+**方式一：使用本地数据库**
 
 ```bash
 # 数据库依赖已包含在requirements.txt中，无需额外安装
@@ -404,9 +340,8 @@ redis-server
 
 > ⚠️ **重要说明**:
 >
-> - **🐳 Docker部署**: 数据库自动包含，无需额外配置
 > - **💻 本地部署**: 可选择仅启动数据库服务或完全本地安装
-> - **📋 推荐**: 使用Docker部署以获得最佳体验和一致性
+> - **📋 推荐**: 使用本地部署以获得最佳调试体验
 
 #### 数据库配置选项
 
@@ -547,15 +482,7 @@ python scripts/maintenance/cleanup_cache.py --days 7
 
 2. **MongoDB连接失败**
 
-   **Docker部署**：
-
-   ```bash
-   # 检查服务状态
-   docker-compose logs mongodb
-
-   # 重启服务
-   docker-compose restart mongodb
-   ```
+   
 
    **本地部署**：
 
@@ -631,22 +558,7 @@ pip install markdown pypandoc
 
 ### 🚀 启动应用
 
-#### 🐳 Docker启动（推荐）
 
-如果您使用Docker部署，应用已经自动启动：
-
-```bash
-# 应用已在Docker中运行，直接访问：
-# Web界面: http://localhost:8501
-# 数据库管理: http://localhost:8081
-# 缓存管理: http://localhost:8082
-
-# 查看运行状态
-docker-compose ps
-
-# 查看日志
-docker-compose logs -f web
-```
 
 #### 💻 本地启动
 
@@ -673,7 +585,7 @@ python web/run_web.py
 streamlit run web/app.py
 ```
 
-然后在浏览器中访问 `http://localhost:8501`
+然后在浏览器中访问 `http://localhost:8080`
 
 **Web界面特色功能**:
 
@@ -1118,7 +1030,7 @@ cost_optimized_config = {
 
 包括但不限于：
 
-- 🐳 **Docker容器化** - 部署方案优化
+
 - 📄 **报告导出功能** - 多格式输出支持
 - 🐛 **Bug修复** - 系统稳定性提升
 - 🔧 **代码优化** - 用户体验改进

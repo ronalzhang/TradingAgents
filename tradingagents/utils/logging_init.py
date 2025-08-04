@@ -34,14 +34,9 @@ def init_logging(config_override: Optional[dict] = None) -> None:
     logger.info(f"📁 日志目录: {logger_manager.config.get('handlers', {}).get('file', {}).get('directory', 'N/A')}")
     logger.info(f"📊 日志级别: {logger_manager.config.get('level', 'INFO')}")
     
-    # Docker环境特殊处理
-    if logger_manager.config.get('docker', {}).get('enabled', False):
-        logger.info("🐳 Docker环境检测到，使用容器优化配置")
-    
     # 记录环境信息
     logger.debug(f"🔧 Python版本: {sys.version}")
     logger.debug(f"📂 工作目录: {os.getcwd()}")
-    logger.debug(f"🌍 环境变量: DOCKER_CONTAINER={os.getenv('DOCKER_CONTAINER', 'false')}")
 
 
 def get_session_logger(session_id: str, module_name: str = 'session') -> 'logging.Logger':
@@ -101,7 +96,6 @@ def log_startup_info():
     
     # 环境信息
     env_info = {
-        'DOCKER_CONTAINER': os.getenv('DOCKER_CONTAINER', 'false'),
         'TRADINGAGENTS_LOG_LEVEL': os.getenv('TRADINGAGENTS_LOG_LEVEL', 'INFO'),
         'TRADINGAGENTS_LOG_DIR': os.getenv('TRADINGAGENTS_LOG_DIR', './logs'),
     }

@@ -122,17 +122,14 @@ class TradingAgentsLogger:
                 'requests': {'level': 'WARNING'},
                 'matplotlib': {'level': 'WARNING'}
             },
-            'docker': {
-                'enabled': os.getenv('DOCKER_CONTAINER', 'false').lower() == 'true',
-                'stdout_only': True  # Docker环境只输出到stdout
-            }
+
         }
 
     def _load_config_file(self) -> Optional[Dict[str, Any]]:
         """从配置文件加载日志配置"""
         # 确定配置文件路径
         config_paths = [
-            'config/logging_docker.toml' if os.getenv('DOCKER_CONTAINER') == 'true' else None,
+
             'config/logging.toml',
             './logging.toml'
         ]
@@ -155,21 +152,14 @@ class TradingAgentsLogger:
         """将TOML配置转换为内部配置格式"""
         logging_config = toml_config.get('logging', {})
 
-        # 检查Docker环境
-        is_docker = (
-            os.getenv('DOCKER_CONTAINER') == 'true' or
-            logging_config.get('docker', {}).get('enabled', False)
-        )
+
 
         return {
             'level': logging_config.get('level', 'INFO'),
             'format': logging_config.get('format', {}),
             'handlers': logging_config.get('handlers', {}),
             'loggers': logging_config.get('loggers', {}),
-            'docker': {
-                'enabled': is_docker,
-                'stdout_only': logging_config.get('docker', {}).get('stdout_only', True)
-            },
+,
             'performance': logging_config.get('performance', {}),
             'security': logging_config.get('security', {}),
             'business': logging_config.get('business', {})
@@ -192,7 +182,7 @@ class TradingAgentsLogger:
         # 添加处理器
         self._add_console_handler(root_logger)
         
-        if not self.config['docker']['enabled'] or not self.config['docker']['stdout_only']:
+
             self._add_file_handler(root_logger)
             if self.config['handlers']['structured']['enabled']:
                 self._add_structured_handler(root_logger)

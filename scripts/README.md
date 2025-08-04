@@ -35,8 +35,7 @@
 - 版本发布
 - 打包部署
 
-### 🐳 docker/ - Docker脚本
-- Docker服务管理
+
 - 容器启动停止
 - 数据库初始化
 
@@ -76,7 +75,7 @@ bash scripts/git/upstream_git_workflow.sh
 | `maintenance/` | 维护和管理 | sync_upstream.py |
 | `development/` | 开发辅助 | prepare_upstream_contribution.py |
 | `deployment/` | 部署发布 | create_github_release.py |
-| `docker/` | 容器管理 | start_docker_services.bat |
+
 | `git/` | Git工具 | upstream_git_workflow.sh |
 
 ## 注意事项

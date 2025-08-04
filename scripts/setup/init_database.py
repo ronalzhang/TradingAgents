@@ -260,8 +260,7 @@ def main():
     # 测试连接
     if not test_database_connection():
         logger.error(f"\n❌ 数据库连接失败，请检查:")
-        logger.info(f"1. Docker服务是否启动: docker ps")
-        logger.info(f"2. 运行启动脚本: scripts/start_docker_services.bat")
+        
         logger.info(f"3. 检查环境变量配置: .env文件")
         return False
     

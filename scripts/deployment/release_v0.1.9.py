@@ -116,7 +116,7 @@ def generate_release_summary():
                 "unified_management": "LoggingManager统一日志管理",
                 "configurable": "TOML配置文件，灵活控制日志级别",
                 "tool_logging": "详细记录工具调用过程和结果",
-                "multi_environment": "本地和Docker环境差异化配置"
+                "multi_environment": "本地环境配置"
             },
             "data_source_improvements": {
                 "hk_stocks": "港股数据获取优化和容错机制",
@@ -252,7 +252,7 @@ def main():
     print("   1. git push origin main")
     print("   2. git push origin v0.1.9")
     print("   3. 在GitHub创建Release")
-    print("   4. 更新Docker镜像")
+    
     
     return True
 
