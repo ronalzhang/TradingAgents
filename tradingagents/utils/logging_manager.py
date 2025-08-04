@@ -180,9 +180,9 @@ class TradingAgentsLogger:
         # 添加处理器
         self._add_console_handler(root_logger)
         
-
         self._add_file_handler(root_logger)
-            if self.config['handlers']['structured']['enabled']:
+        
+        if self.config['handlers']['structured']['enabled']:
             self._add_structured_handler(root_logger)
         
         # 配置特定日志器
