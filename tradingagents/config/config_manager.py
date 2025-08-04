@@ -12,9 +12,6 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from dotenv import load_dotenv
 
-# 导入统一日志系统
-from tradingagents.utils.logging_init import get_logger
-
 # 导入日志模块
 from tradingagents.utils.logging_manager import get_logger
 logger = get_logger('agents')
